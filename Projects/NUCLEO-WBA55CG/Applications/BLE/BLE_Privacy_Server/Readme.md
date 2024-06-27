@@ -1,0 +1,136 @@
+﻿## **BLE\_Privacy Application Description**
+How to use a Resolvable Private Address (RPA) to prevent tracking of a beacon device by its BLE address
+### **Keywords**
+Connectivity, BLE, BLE protocol, BLE pairing, BLE profile, BLE Privacy
+### **Directory contents**
+- BLE\_Privacy\_Server/Core/Inc/app\_common.h App Common application configuration file for STM32WPAN Middleware
+- BLE\_Privacy\_Server/Core/Inc/app\_conf.h Application configuration file for STM32WPAN Middleware
+- BLE\_Privacy\_Server/Core/Inc/app\_entry.h Interface to the application 
+- BLE\_Privacy\_Server/Core/Inc/main.h Header for main.c file. This file contains the common defines of the application
+- BLE\_Privacy\_Server/Core/Inc/stm32wbaxx\_hal\_conf.h HAL configuration file
+- BLE\_Privacy\_Server/Core/Inc/stm32wbaxx\_it.h This file contains the headers of the interrupt handlers
+- BLE\_Privacy\_Server/Core/Inc/nucleo\_conf.h STM32WBA55G\_DK1 board configuration file.
+- BLE\_Privacy\_Server/Core/Inc/utilities\_conf.h Header for configuration file for STM32 Utilities
+- BLE\_Privacy\_Server/STM32\_WPAN/App/app\_ble.h Header for ble application 
+- BLE\_Privacy\_Server/STM32\_WPAN/App/ble\_conf.h Configuration file for BLE Middleware
+- BLE\_Privacy\_Server/STM32\_WPAN/App/ble\_dbg\_conf.h Debug configuration file for BLE Middleware
+- BLE\_Privacy\_Server/STM32\_WPAN/App/privacy\_server.h Header for service.c 
+- BLE\_Privacy\_Server/STM32\_WPAN/App/privacy\_server\_app.h Header for service\_app.c 
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/bpka.h This file contains the interface of the BLE PKA module
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/host\_stack\_if.h This file contains the interface for the stack tasks 
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/ll\_sys\_if.h Header file for ll\_sys\_if.c
+- BLE\_Privacy\_Server/System/Config/ADC\_Ctrl/adc\_ctrl\_conf.h Configuration Header for ADC controller module
+- BLE\_Privacy\_Server/System/Config/CRC\_Ctrl/crc\_ctrl\_conf.h Configuration Header for CRC controller module
+- BLE\_Privacy\_Server/System/Config/Debug\_GPIO/app\_debug.h Real Time Debug module application APIs and signal table 
+- BLE\_Privacy\_Server/System/Config/Debug\_GPIO/app\_debug\_signal\_def.h Real Time Debug module application signal definition 
+- BLE\_Privacy\_Server/System/Config/Debug\_GPIO/debug\_config.h Real Time Debug module general configuration file 
+- BLE\_Privacy\_Server/System/Config/Flash/simple\_nvm\_arbiter\_conf.h Configuration header for simple\_nvm\_arbiter.c module 
+- BLE\_Privacy\_Server/System/Config/Log/log\_module.h Configuration Header for log module
+- BLE\_Privacy\_Server/System/Config/LowPower/app\_sys.h Header for app\_sys.c 
+- BLE\_Privacy\_Server/System/Config/LowPower/user\_low\_power\_config.h Header for user\_low\_power\_config.c
+- BLE\_Privacy\_Server/System/Interfaces/hw.h This file contains the interface of STM32 HW drivers
+- BLE\_Privacy\_Server/System/Interfaces/hw\_if.h Hardware Interface 
+- BLE\_Privacy\_Server/System/Interfaces/stm32\_lpm\_if.h Header for stm32\_lpm\_if.c module (device specific LP management) 
+- BLE\_Privacy\_Server/System/Interfaces/timer\_if.h configuration of the timer\_if.c instances 
+- BLE\_Privacy\_Server/System/Interfaces/usart\_if.h Header file for stm32\_adv\_trace interface file 
+- BLE\_Privacy\_Server/System/Modules/adc\_ctrl.h Header for ADC client manager module 
+- BLE\_Privacy\_Server/System/Modules/ble\_timer.h This header defines the timer functions used by the BLE stack 
+- BLE\_Privacy\_Server/System/Modules/crc\_ctrl.h Header for CRC client manager module
+- BLE\_Privacy\_Server/System/Modules/dbg\_trace.h Header for dbg\_trace.c 
+- BLE\_Privacy\_Server/System/Modules/otp.h Header file for One Time Programmable (OTP) area 
+- BLE\_Privacy\_Server/System/Modules/scm.h Header for scm.c module 
+- BLE\_Privacy\_Server/System/Modules/stm\_list.h Header file for linked list library
+- BLE\_Privacy\_Server/System/Modules/temp\_measurement.h Header file for temperature measurement module
+- BLE\_Privacy\_Server/System/Modules/utilities\_common.h Common file to utilities 
+- BLE\_Privacy\_Server/System/Modules/baes/baes.h This file contains the interface of the basic AES software module
+- BLE\_Privacy\_Server/System/Modules/baes/baes\_global.h This file contains the internal definitions of the AES software module
+- BLE\_Privacy\_Server/System/Modules/Flash/flash\_driver.h Header for flash\_driver.c module 
+- BLE\_Privacy\_Server/System/Modules/Flash/flash\_manager.h Header for flash\_manager.c module 
+- BLE\_Privacy\_Server/System/Modules/Flash/rf\_timing\_synchro.h Header for rf\_timing\_synchro.c module 
+- BLE\_Privacy\_Server/System/Modules/Flash/simple\_nvm\_arbiter.h Header for simple\_nvm\_arbiter.c module 
+- BLE\_Privacy\_Server/System/Modules/Flash/simple\_nvm\_arbiter\_common.h Common header of simple\_nvm\_arbiter.c module 
+- BLE\_Privacy\_Server/System/Modules/MemoryManager/advanced\_memory\_manager.h Header for advance\_memory\_manager.c module 
+- BLE\_Privacy\_Server/System/Modules/MemoryManager/stm32\_mm.h Header for stm32\_mm.c module 
+- BLE\_Privacy\_Server/System/Modules/Nvm/nvm.h This file contains the interface of the NVM manager
+- BLE\_Privacy\_Server/System/Modules/RFControl/rf\_antenna\_switch.h RF related module to handle dedictated GPIOs for antenna switch
+- BLE\_Privacy\_Server/System/Modules/RTDebug/debug\_signals.h Real Time Debug module System and Link Layer signal definition 
+- BLE\_Privacy\_Server/System/Modules/RTDebug/local\_debug\_tables.h Real Time Debug module System and Link Layer signal 
+- BLE\_Privacy\_Server/System/Modules/RTDebug/RTDebug.h Real Time Debug module API declaration 
+- BLE\_Privacy\_Server/System/Modules/RTDebug/RTDebug\_dtb.h Real Time Debug module API declaration for DTB usage
+- BLE\_Privacy\_Server/System/Modules/SerialCmdInterpreter/serial\_cmd\_interpreter.h Header file for the serial commands interpreter module
+- BLE\_Privacy\_Server/Core/Src/app\_entry.c Entry point of the application 
+- BLE\_Privacy\_Server/Core/Src/main.c Main program body 
+- BLE\_Privacy\_Server/Core/Src/stm32wbaxx\_hal\_msp.c This file provides code for the MSP Initialization and de-Initialization codes
+- BLE\_Privacy\_Server/Core/Src/stm32wbaxx\_it.c Interrupt Service Routines
+- BLE\_Privacy\_Server/Core/Src/system\_stm32wbaxx.c CMSIS Cortex-M33 Device Peripheral Access Layer System Source File 
+- BLE\_Privacy\_Server/STM32\_WPAN/App/app\_ble.c BLE Application
+- BLE\_Privacy\_Server/STM32\_WPAN/App/privacy\_server.c service definition
+- BLE\_Privacy\_Server/STM32\_WPAN/App/privacy\_server\_app.c service\_app application definition
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/bleplat.c This file implements the platform functions for BLE stack library
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/bpka.c This file implements the BLE PKA module
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/host\_stack\_if.c Source file for the stack tasks 
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/linklayer\_plat.c Source file for the linklayer plateform adaptation layer 
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/ll\_sys\_if.c Source file for initiating the system sequencer 
+- BLE\_Privacy\_Server/STM32\_WPAN/Target/power\_table.c This file contains supported power tables 
+- BLE\_Privacy\_Server/System/Config/ADC\_Ctrl/adc\_ctrl\_conf.c Source for ADC client controller module configuration file
+- BLE\_Privacy\_Server/System/Config/CRC\_Ctrl/crc\_ctrl\_conf.c Source for CRC client controller module configuration file
+- BLE\_Privacy\_Server/System/Config/Debug\_GPIO/app\_debug.c Real Time Debug module application side APIs 
+- BLE\_Privacy\_Server/System/Config/Flash/simple\_nvm\_arbiter\_conf.c The Simple NVM arbiter module provides an interface to write and/or restore data from SRAM to FLASH with use of NVMs
+- BLE\_Privacy\_Server/System/Config/Log/log\_module.c Source file of the log module
+- BLE\_Privacy\_Server/System/Config/LowPower/user\_low\_power\_config.c Low power related user configuration
+- BLE\_Privacy\_Server/System/Interfaces/hw\_aes.c This file contains the AES driver for STM32WBA 
+- BLE\_Privacy\_Server/System/Interfaces/hw\_otp.c This file contains the OTP driver
+- BLE\_Privacy\_Server/System/Interfaces/hw\_pka.c This file contains the PKA driver for STM32WBA 
+- BLE\_Privacy\_Server/System/Interfaces/hw\_rng.c This file contains the RNG driver for STM32WBA 
+- BLE\_Privacy\_Server/System/Interfaces/pka\_p256.c This file is an optional part of the PKA driver for STM32WBA. It is dedicated to the P256 elliptic curve
+- BLE\_Privacy\_Server/System/Interfaces/stm32\_lpm\_if.c Low layer function to enter/exit low power modes (stop, sleep) 
+- BLE\_Privacy\_Server/System/Interfaces/timer\_if.c Configure RTC Alarm, Tick and Calendar manager 
+- BLE\_Privacy\_Server/System/Interfaces/usart\_if.c Source file for interfacing the stm32\_adv\_trace to hardware 
+- BLE\_Privacy\_Server/System/Modules/adc\_ctrl.c Header for ADC client manager module 
+- BLE\_Privacy\_Server/System/Modules/app\_sys.c Application system for STM32WPAN Middleware
+- BLE\_Privacy\_Server/System/Modules/ble\_timer.c This module implements the timer core functions 
+- BLE\_Privacy\_Server/System/Modules/crc\_ctrl.c Source for CRC client controller module
+- BLE\_Privacy\_Server/System/Modules/otp.c Source file for One Time Programmable (OTP) area 
+- BLE\_Privacy\_Server/System/Modules/scm.c Functions for the System Clock Manager
+- BLE\_Privacy\_Server/System/Modules/stm\_list.c TCircular Linked List Implementation
+- BLE\_Privacy\_Server/System/Modules/temp\_measurement.c Temperature measurement module
+- BLE\_Privacy\_Server/System/Modules/baes/baes\_cmac.c This file contains the AES CMAC implementation
+- BLE\_Privacy\_Server/System/Modules/baes/baes\_ecb.c This file contains the AES ECB functions implementation
+- BLE\_Privacy\_Server/System/Modules/Flash/flash\_driver.c The Flash Driver module is the interface layer between Flash management modules and HAL Flash drivers
+- BLE\_Privacy\_Server/System/Modules/Flash/flash\_manager.c The Flash Manager module provides an interface to write raw data from SRAM to FLASH
+- BLE\_Privacy\_Server/System/Modules/Flash/rf\_timing\_synchro.c The RF Timing Synchronization module provides an interface to synchronize the flash processing versus the RF activity to make sure the RF timing is not broken
+- BLE\_Privacy\_Server/System/Modules/Flash/simple\_nvm\_arbiter.c The Simple NVM arbiter module provides an interface to write and/or restore data from SRAM to FLASH with use of NVMs
+- BLE\_Privacy\_Server/System/Modules/MemoryManager/advanced\_memory\_manager.c Memory Manager 
+- BLE\_Privacy\_Server/System/Modules/MemoryManager/stm32\_mm.c Memory Manager 
+- BLE\_Privacy\_Server/System/Modules/Nvm/nvm\_emul.c This file implements the RAM version of the NVM manager for STM32WBX. It is made for test purpose
+- BLE\_Privacy\_Server/System/Modules/RFControl/rf\_antenna\_switch.c RF related module to handle dedictated GPIOs for antenna switch
+- BLE\_Privacy\_Server/System/Modules/RTDebug/RTDebug.c Real Time Debug module API definition 
+- BLE\_Privacy\_Server/System/Modules/RTDebug/RTDebug\_dtb.c Real Time Debug module API definition for DTB usage
+- BLE\_Privacy\_Server/System/Modules/SerialCmdInterpreter/serial\_cmd\_interpreter.c Source file for the serial commands interpreter module
+### **Hardware and Software environment**
+- This example runs on STM32WBA55xx Nucleo Board.
+- Connect the Nucleo Board to your PC with a USB cable type A to type C to ST-LINK connector (USB\_STLINK). 
+### **How to use it?**
+If not already done, have a look at the readme file in the home directory of this git and visit: [BLE Privacy Wiki ](https://wiki.st.com/stm32mcu/wiki/Connectivity:STM32WB-WBA_BLE_Privacy)page.
+
+In order to make the program work, you must do the following:
+
+- Open IAR toolchain.
+- Rebuild all files and flash the board with the executable file.
+- Power on the Nucleo boards with the BLE\_Client\_Privacy and BLE\_Server\_Privacy applications.
+- Then press B2 on both Client and Server boards, wait for the task to end and reset both boards.
+- The following sequence demonstrates how privacy has been implemented : 
+- B1 on Server : Start advertising for 10 seconds.
+- B1 short press on Client : Scan all the devices that are advertising.
+- B1 long press on Client : Scan and connect to the server. After that a pre-programmed will execute :
+
+    - Start connection.
+    - Start pairing/bonding.
+    - Start Encryption.
+    - Start disconnection.
+    - Once disconnected, the Client and server will add the bonded device to their respective resolving lists, which allows for automatic resolution of the RPA at the stack level.
+
+- B1 on Server : the server starts to advertise with the RPA. This address evolves every 10 seconds, which means that a different BD address is used to advertise every 10 seconds. This has been set up using the hci_le_set_resolvable_private_address_timeout() function. When the server start to advertise, the current RPA is printed. Unfortunately, if this one evolves during the advertise interval (10 sec), the new one isn't printed.
+- B1 short press Client : the Client is able to resolve the RPA, and both the BD address as well as the RPA are printed. As explained before, the RPA can change during the scan interval (1 sec).
+- B3 on Client : disable RPA resolution by the stack.
+- B1 short press on Server & Client : the client is no longer able to detect the RPA or retrieve the real BD address.
