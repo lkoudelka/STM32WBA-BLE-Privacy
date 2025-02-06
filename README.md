@@ -30,9 +30,9 @@ In order to make the program work, you must do the following:
 - Buttons utilities on both Client/Server.
   Button | BLE_Client_Privacy | BLE_Server_Privacy
   :-------------------------:|:-------------------------:|:-------------------------:
-  Button 1 (Short press) : B1S | scan without connect | Start advertise
-  Button 1 (Long press) : B1L| scan and try to connect | Start advertise
-  Button 2 : B2 | Clear database | Clear data base
+  Button 1 (Short press) : B1S | Scan without connect | Start advertise
+  Button 1 (Long press) : B1L| Scan and try to connect | Start advertise
+  Button 2 : B2 | Clear database | Clear database
   Button 3 : B3 | Allow RPA resolution by the stack | /
 
 Power on the Nucleo boards with the BLE_Client_Privacy and BLE_Server_Privacy applications.
@@ -48,10 +48,28 @@ This following sequence demonstrate how the Privacy have been implemented :
   - Start Encryption
   - Start disconnection
   - Once disconnect, Client and server will add the device bonded to their respective resolving list, which allow to automaticly resolve the RPA at the stack level.
-- B1 on Server : the server start to advertise with the RPA. This one evolve each 10 secondes, which means that a different BD address is used to advertise each 10 secondes. This has been set up using the hci_le_set_resolvable_private_address_timeout() function. When the server start to advertise, the current RPA is printed. Unfortunatly, if this one evolves during the advertise interval (10 sec), the new one isn't printed.
+- B1 on Server : the server start to advertise with the RPA. This one evolve each 10 secondes, which means that a different BD (Bluetooth Device) address is used to advertise each 10 secondes. This has been set up using the hci_le_set_resolvable_private_address_timeout() function. When the server start to advertise, the current RPA is printed. Unfortunatly, if this one evolves during the advertise interval (10 sec), the new one isn't printed.
 - B1S Client : the Client is able to resolve the RPA, and both the BD address as well as the RPA are printed. As explained before, the RPA can change during the scan interval (1 sec).
 - B3 on Client : disable RPA resolution by the stack
 - B1S on Server & Client : the client is no more able to detect the RPA and to retrieve the real BD address.
+
+## Step-by-step Guide (WBA server and Smartphone client)
+- Open IAR toolchain
+- Rebuild all files and flash the board with the executable file
+- Open ST BLE Toolbox application
+- Push B1 on server in order to start advertising
+- Perform scan in ST BLE Toolbox and search for "p2pS_7F"
+
+![UG_IMAGE_1](Utilities/Media/User_Guide/Scan.jpg)
+
+- After connection, pairing/bonding is automatically performed 
+
+![UG_IMAGE_2](Utilities/Media/User_Guide/Pairing.jpg)
+
+- After disconnection, server will add client to the resolving list
+- Since then, when server is advertising, it will advertise RPA (for unbonded devices) instead of Random Static Address
+
+![UG_IMAGE_3](Utilities/Media/User_Guide/Bonded.jpg) ![UG_IMAGE_4](Utilities/Media/User_Guide/Unbonded.jpg)
 
 ## Troubleshooting
 
